@@ -13,7 +13,6 @@ from copy import deepcopy
 from pathlib import Path
 import torchvision.models as torchmodels
 import openslide
-import pyvips
 import torch.utils.data
 import torchvision
 import torch.nn as nn
