@@ -407,7 +407,9 @@ class Pipeline1(GeneralPipeline):
             x = torch.randn(*size_input)
             size_pretrainedoutput = list(module_pretrained(x).size()) #[N,C,H,W]
         list_modules = list(module_pretrained.children())+\
-               [nn.Conv2d(size_pretrainedoutput[1], 10, kernel_size=1, stride=1, padding=0)]
+               [nn.Conv2d(size_pretrainedoutput[1], 10, kernel_size=1, stride=1, padding=0),\
+               nn.BatchNorm2d(10, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+               ]
         module_stg1 = nn.Sequential(*list_modules)
         return module_stg1
     
